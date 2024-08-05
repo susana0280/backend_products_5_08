@@ -12,8 +12,13 @@ const app = express();
 app.use(bodyParser.json()) // Parseador de Bodies
 
 //Acá conectaremos la base de datos:
+
 mongoose.connect(process.env.MONGO_URL, { dbName: process.env.MONGO_DB_NAME })
+.then(() => console.log('Conectado a MongoDB'))
+  .catch(err => console.error('No se pudo conectar a MongoDB:', err));
 const db = mongoose.connection;
+
+
 
 
 //Routes
