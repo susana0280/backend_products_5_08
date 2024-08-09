@@ -2,10 +2,16 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const { config } = require('dotenv')
+const cors = require('cors');
 config()
 
 const productosRoutes = require('./routes/producto.routes')
 const authRoutes=require('./routes/auth.routes')
+
+//aplicar cors
+app.use(cors());
+
+
 
 // Usamos express para los middlewares 
 const app = express();
@@ -13,11 +19,11 @@ app.use(bodyParser.json()) // Parseador de Bodies
 
 //Acá conectaremos la base de datos:
 
+
 mongoose.connect(process.env.MONGO_URL, { dbName: process.env.MONGO_DB_NAME })
 .then(() => console.log('Conectado a MongoDB'))
   .catch(err => console.error('No se pudo conectar a MongoDB:', err));
 const db = mongoose.connection;
-
 
 
 
