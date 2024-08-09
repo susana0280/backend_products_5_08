@@ -3,18 +3,20 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const { config } = require('dotenv')
 const cors = require('cors');
+
 config()
 
 const productosRoutes = require('./routes/producto.routes')
 const authRoutes=require('./routes/auth.routes')
 
-//aplicar cors
-app.use(cors());
-
-
 
 // Usamos express para los middlewares 
 const app = express();
+
+
+
+// aplicar cors
+app.use(cors());
 app.use(bodyParser.json()) // Parseador de Bodies
 
 //Acá conectaremos la base de datos:
